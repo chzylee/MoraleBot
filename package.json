@@ -1,0 +1,19 @@
+{
+  "name": "moralebot",
+  "version": "1.0.0",
+  "description": "Morale boosting joke bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chzylee/MoraleBot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chzylee/MoraleBot/issues"
+  },
+  "homepage": "https://github.com/chzylee/MoraleBot#readme"
+}
