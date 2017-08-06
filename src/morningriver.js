@@ -1,3 +1,4 @@
+const line = require('@line/bot-sdk');
 const _mama = require('./lib/yomama');
 const _dad = require('./lib/dadjoke');
 
@@ -7,10 +8,16 @@ module.exports = class MorningRiver {
         this.dad = new _dad();
 
         this.greetings = [
-            'Salutations, my little lamb',
-            'A pleasure seeing you, my most delightful child',
-            'Whats new in the zoo cutie-poo?',
-
+            'salutations my little lamb.',
+            'tis a pleasure seeing you, my delightful potato.',
+            'whats new in the zoo cutie-poo?',
+            'my dearest baby possum, to what do I owe this honour?',
+            'how dost thou?',
+            'how fares thee mutton-muncher?',
+            'you are well met.',
+            'hail to your grace.',
+            'good morrow sweet kitten.',
+            'whats poppin ma dood??'
         ]
     }
 
@@ -18,8 +25,9 @@ module.exports = class MorningRiver {
         this.lower = text.toLowerCase();
     }
 
-    greeting() {
-
+    greeting(username) {
+        var index = Math.ceil(Math.random() * (this.greetings.length - 1));
+        return username + ', ' + this.greetings[index];
     }
 
     yoMama() {
@@ -32,9 +40,9 @@ module.exports = class MorningRiver {
         return this.dad.jokes[index];
     }
 
-    mrHandler(text) {
-        if(this.lower === 'hi' || this.lower === 'hello'){
-            return this.greeting();
+    mrHandler(text, username) {
+        if(this.lower.includes('hi') || this.lower.includes('hello')){
+            return this.greeting(username);
         }
         else if(this.lower.includes('yo mama') || this.lower.includes('yo momma') || this.lower.includes('yo mamma')){
             return this.yoMama();
