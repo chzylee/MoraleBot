@@ -44,7 +44,7 @@ module.exports = class MorningRiver {
     }
 
     mrHandler(text, username) {
-        if(this.lower.includes('hi') || this.lower.includes('hello') || this.lower.includes('what\'s up') || this.lower.includes('whats up')){
+        if(this.lower.startsWith('hi') || this.lower.startsWith('hello') || this.lower.startsWith('what\'s up') || this.lower.startsWith('whats up')){
             return this.greeting(username);
         }
         else if(this.lower.includes('yo mama') || this.lower.includes('yo momma') || this.lower.includes('yo mamma')){
