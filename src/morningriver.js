@@ -6,9 +6,6 @@ module.exports = class MorningRiver {
     constructor(){
         this.mama = new _mama();
         this.dad = new _dad();
-        this.client = new line.Client({
-            channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN
-        });
 
         this.greetings = [
             'salutations my little lamb.',
@@ -31,12 +28,25 @@ module.exports = class MorningRiver {
     greeting(userId) {
         console.log('greeting user: ' + userId);
         var index = Math.ceil(Math.random() * (this.greetings.length - 1));
-        var name = this.client.getProfile(userId)
-        .then((profile) =>  profile.displayName);
+        var getDisplayName = function(userId) {
+            var client = new line.Client({
+                channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN
+            });
+            client.getProfile(userId)
+                .then((profile) => {
+                    console.log(profile.displayName);
+                    console.log(profile.userId);
+                    console.log(profile.pictureUrl);
+                    console.log(profile.statusMessage);
+                })
+        }
 
         Promise
-            .all(name)
-            .then((result) => result + ', ' + this.greetings[index])
+            .all(getDisplayName())
+            .then((result) => {
+                console.log(result);
+                return result + ', ' + this.greetings[index];
+            })
             .catch((err) => {
                 console.log('error getting name: ' + err);
             });
