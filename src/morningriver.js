@@ -26,16 +26,19 @@ module.exports = class MorningRiver {
     }
 
     greeting(username) {
+        console.log('greeting ' + username);
         var index = Math.ceil(Math.random() * (this.greetings.length - 1));
         return username + ', ' + this.greetings[index];
     }
 
     yoMama() {
+        console.log('telling yo mama joke');
         var index = Math.ceil(Math.random() * (this.dad.jokes.length - 1));
         return this.mama.jokes[index];
     }
 
     puns() {
+        console.log('telling dad joke');
         var index = Math.ceil(Math.random() * (this.dad.jokes.length - 1));
         return this.dad.jokes[index];
     }
