@@ -41,8 +41,12 @@ module.exports = class MorningRiver {
                 return 'Precious noodlehead';
             }));
 
-        return name.then().resolve(name + ', ' + this.greetings[index]);
-       
+        name.then((val) => {
+            console.log(name);
+        });
+
+        return Promise.resolve(name + ', ' + this.greetings[index]);
+        
     }
 
     yoMama() {
