@@ -55,14 +55,15 @@ function handleEvent(event) {
 // get name function
 function getName(userId) {
     console.log('User id: ' + userId);
-    var name = client.getProfile(userId)
+    var name;
+    client.getProfile(userId)
         .then((profile) => {
             console.log(profile.displayName);
-            return profile.displayName;
+            name = profile.displayName;
         })
         .catch((err) => {
             console.log('error getting name');
-            return 'Precious noodlehead';
+            name = 'Precious noodlehead';
         });
     return name;
 }
