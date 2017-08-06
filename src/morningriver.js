@@ -37,6 +37,7 @@ module.exports = class MorningRiver {
                 return profile.displayName;
             })
             .then((username) => {
+                console.log('returning ' + username);
                 return username + ', ' + this.greetings[index];
             })
             .catch((err) => {
