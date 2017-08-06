@@ -34,8 +34,9 @@ module.exports = class MorningRiver {
         this.client.getProfile(userId)
             .then((profile) => {
                 console.log('name: ' + profile.displayName);
-                fulfill(profile.displayName + ', ' + this.greetings[index]);
+                return profile.displayName + ', ' + this.greetings[index];
             })
+            .resolve(message)
             .catch((err) => {
                 console.log('error getting name: ' + err);
                 return 'Precious noodlehead' + ', ' + this.greetings[index];
