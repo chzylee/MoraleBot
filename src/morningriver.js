@@ -31,18 +31,11 @@ module.exports = class MorningRiver {
     greeting(userId) {
         console.log('greeting user: ' + userId);
         var index = Math.ceil(Math.random() * (this.greetings.length - 1));
-        var message;
-        return this.client.getProfile(userId)
-            .then((profile) => {
-                console.log('name: ' + profile.displayName);
-                message = profile.displayName + ', ' + this.greetings[index];
-            })
-            .resolve(message)
-            .catch((err) => {
-                console.log('error getting name: ' + err);
-                return 'Precious noodlehead' + ', ' + this.greetings[index];
+        var message = new Promise(
+            (resolve, reject) => {
+                resolve(this.client.getProfile(userId));
             });
-        return msg;
+        return message;
     }
 
     yoMama() {
