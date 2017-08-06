@@ -41,6 +41,7 @@ function handleEvent(event) {
   // create a echoing text message
   var echo = { type: 'text', text: event.message.text };
   var username = getName(event.source.userId);
+  console.log('username: ' + username);
   mr.setLower(event.message.text);
   echo.text = mr.mrHandler(event.message.text, username);
   if(echo.text === null){
