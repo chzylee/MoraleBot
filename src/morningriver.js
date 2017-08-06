@@ -31,21 +31,20 @@ module.exports = class MorningRiver {
     greeting(userId) {
         console.log('greeting user: ' + userId);
         var index = Math.ceil(Math.random() * (this.greetings.length - 1));
-        var name = Promise.resolve(this.client.getProfile(userId)
-            .then((profile) => {
-                console.log('name: ' + profile.displayName);
-                return profile.displayName;
-            })
-            .catch((err) => {
-                console.log('error getting name: ' + err);
-                return 'Precious noodlehead';
-            }));
-
-        name.then((val) => {
-            console.log(name);
+        var name = this.client.getProfile(userId)
+        .then((profile) => {
+            console.log('name: ' + profile.displayName);
+            return profile.displayName;
+        })
+        .catch((err) => {
+            console.log('error getting name: ' + err);
+            return 'Precious noodlehead';
         });
 
-        return Promise.resolve(name + ', ' + this.greetings[index]);
+        Promise
+            .all(name)
+            .then((result) => {
+                return result + ', ' + this.greetings[index]});
         
     }
 
