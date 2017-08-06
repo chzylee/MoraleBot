@@ -29,7 +29,7 @@ module.exports = class MorningRiver {
     }
 
     greeting(userId) {
-        console.log('greeting');
+        console.log('greeting user: ' + userId);
         var index = Math.ceil(Math.random() * (this.greetings.length - 1));
         return this.client.getProfile(userId)
             .then((profile) => {
@@ -37,7 +37,7 @@ module.exports = class MorningRiver {
                 return profile.displayName + ', ' + this.greetings[index];
             })
             .catch((err) => {
-                console.log('error getting name');
+                console.log('error getting name: ' + err);
                 return 'Precious noodlehead' + ', ' + this.greetings[index];
             });
     }
@@ -56,7 +56,7 @@ module.exports = class MorningRiver {
 
     mrHandler(text, userId) {
         if(this.lower.startsWith('hi') || this.lower.startsWith('hello') || this.lower.startsWith('what\'s up') || this.lower.startsWith('whats up')){
-            return this.greeting();
+            return this.greeting(userId);
         }
         else if(this.lower.includes('yo mama') || this.lower.includes('yo momma') || this.lower.includes('yo mamma')){
             return this.yoMama();
