@@ -1,5 +1,5 @@
-const _mama = require('../lib/yomama');
-const _dad = require('../lib/dadjokes');
+const _mama = require('./lib/yomama');
+const _dad = require('./lib/dadjokes');
 
 module.exports = class MorningRiver {
     constructor(){
