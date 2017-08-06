@@ -35,16 +35,16 @@ module.exports = class MorningRiver {
         .then((profile) => {
             console.log('name: ' + profile.displayName);
             return profile.displayName;
-        })
-        .catch((err) => {
-            console.log('error getting name: ' + err);
-            return 'Precious noodlehead';
         });
 
         Promise
             .all(name)
             .then((result) => {
-                return result + ', ' + this.greetings[index]});
+                return result + ', ' + this.greetings[index]})
+            .catch((err) => {
+                console.log('error getting name: ' + err);
+                return 'Precious noodlehead';
+            });
         
     }
 
