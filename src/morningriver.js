@@ -31,7 +31,7 @@ module.exports = class MorningRiver {
     greeting(userId) {
         console.log('greeting');
         var index = Math.ceil(Math.random() * (this.greetings.length - 1));
-        return client.getProfile(userId)
+        return this.client.getProfile(userId)
             .then((profile) => {
                 console.log('name: ' + profile.displayName);
                 return profile.displayName + ', ' + this.greetings[index];
