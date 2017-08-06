@@ -32,10 +32,7 @@ module.exports = class MorningRiver {
         console.log('greeting user: ' + userId);
         var index = Math.ceil(Math.random() * (this.greetings.length - 1));
         var name = this.client.getProfile(userId)
-        .then((profile) => {
-            console.log('name: ' + profile.displayName);
-            return profile.displayName;
-        });
+        .then((profile) =>  profile.displayName);
 
         Promise
             .all(name)
