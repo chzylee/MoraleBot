@@ -38,7 +38,7 @@ module.exports = class MorningRiver {
             })
             .catch((err) => {
                 console.log('error getting name: ' + err);
-                return 'Precious noodlehead' + ', ' + this.greetings[index];
+                return 'yo';
             });
         return msg;
     }
