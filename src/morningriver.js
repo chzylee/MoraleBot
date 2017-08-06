@@ -34,11 +34,11 @@ module.exports = class MorningRiver {
         var name = this.client.getProfile(userId)
             .then((profile) => {
                 console.log('name: ' + profile.displayName);
-                return profile.displayName;
+                resolve(profile.displayName);
             })
             .catch((err) => {
                 console.log('error getting name: ' + err);
-                return 'Precious noodlehead';
+                resolve('Precious noodlehead');
             });
 
         return name + ', ' + this.greetings[index];
