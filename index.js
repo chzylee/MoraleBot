@@ -55,7 +55,7 @@ function handleEvent(event) {
 // get name function
 function getName(userId) {
     console.log('User id: ' + userId);
-    client.getProfile(userId)
+    var name = client.getProfile(userId)
         .then((profile) => {
             console.log(profile.displayName);
             return profile.displayName;
@@ -64,6 +64,7 @@ function getName(userId) {
             console.log('error getting name');
             return 'Precious noodlehead';
         });
+    return name;
 }
 
 // listen on port
