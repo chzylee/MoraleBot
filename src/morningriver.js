@@ -31,7 +31,8 @@ module.exports = class MorningRiver {
     greeting(userId) {
         console.log('greeting user: ' + userId);
         var index = Math.ceil(Math.random() * (this.greetings.length - 1));
-        var name = this.client.getProfile(userId)
+        var getName = async function(userId) {
+            this.client.getProfile(userId)
             .then((profile) => {
                 console.log('name: ' + profile.displayName);
                 return profile.displayName;
@@ -40,7 +41,9 @@ module.exports = class MorningRiver {
                 console.log('error getting name: ' + err);
                 return 'Precious noodlehead';
             });
-
+        };
+        
+        var name = getName(userId);
         return name + ', ' + this.greetings[index];
     }
 
