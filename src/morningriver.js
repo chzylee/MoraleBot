@@ -6,6 +6,9 @@ module.exports = class MorningRiver {
     constructor(){
         this.mama = new _mama();
         this.dad = new _dad();
+        this.client = new line.Client({
+            channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN
+        });
 
         this.greetings = [
             'salutations my little lamb.',
@@ -25,10 +28,18 @@ module.exports = class MorningRiver {
         this.lower = text.toLowerCase();
     }
 
-    greeting(username) {
-        console.log('greeting ' + username);
+    greeting(userId) {
+        console.log('greeting');
         var index = Math.ceil(Math.random() * (this.greetings.length - 1));
-        return username + ', ' + this.greetings[index];
+        return client.getProfile(userId)
+            .then((profile) => {
+                console.log('name: ' + profile.displayName);
+                return profile.displayName + ', ' + this.greetings[index];
+            })
+            .catch((err) => {
+                console.log('error getting name');
+                return 'Precious noodlehead' + ', ' + this.greetings[index];
+            });
     }
 
     yoMama() {
@@ -43,9 +54,9 @@ module.exports = class MorningRiver {
         return this.dad.jokes[index];
     }
 
-    mrHandler(text, username) {
+    mrHandler(text, userId) {
         if(this.lower.startsWith('hi') || this.lower.startsWith('hello') || this.lower.startsWith('what\'s up') || this.lower.startsWith('whats up')){
-            return this.greeting(username);
+            return this.greeting();
         }
         else if(this.lower.includes('yo mama') || this.lower.includes('yo momma') || this.lower.includes('yo mamma')){
             return this.yoMama();
