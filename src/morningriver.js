@@ -6,6 +6,9 @@ module.exports = class MorningRiver {
     constructor(){
         this.mama = new _mama();
         this.dad = new _dad();
+        this.client = new line.Client({
+            channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN
+        });
 
         this.greetings = [
             'salutations my little lamb.',
@@ -25,32 +28,29 @@ module.exports = class MorningRiver {
         this.lower = text.toLowerCase();
     }
 
-    greeting(userId) {
-        console.log('greeting user: ' + userId);
-        var index = Math.ceil(Math.random() * (this.greetings.length - 1));
-        var getDisplayName = function(userId) {
-            var client = new line.Client({
-                channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN
-            });
-            client.getProfile(userId)
-                .then((profile) => {
-                    console.log(profile.displayName);
-                    console.log(profile.userId);
-                    console.log(profile.pictureUrl);
-                    console.log(profile.statusMessage);
-                })
-        }
+    // getName(userId) {
+    //     thi
+    // }
 
-        Promise
-            .all(getDisplayName())
-            .then((result) => {
-                console.log(result);
-                return result + ', ' + this.greetings[index];
-            })
-            .catch((err) => {
-                console.log('error getting name: ' + err);
-            });
-        
+    greet(userId, greetings, client) {
+        return new Promise((resolve, reject) => {
+            console.log('greeting user: ' + userId);
+            var index = Math.ceil(Math.random() * (greetings.length - 1));
+            var name = client.getProfile(userId)
+                    .then((profile) => {
+                        return profile.displayName.toString();
+                    });
+
+            Promise.all([name])
+                .then((name) => {
+                    console.log(name[0] + ', ' + greetings[index]);
+                    resolve(name[0] + ', ' + greetings[index]);
+                })
+                .catch((err) => {
+                    console.log('error getting name: ' + err);
+                    reject(err);
+                });   
+        });
     }
 
     yoMama() {
@@ -67,7 +67,7 @@ module.exports = class MorningRiver {
 
     mrHandler(text, userId) {
         if(this.lower.startsWith('hi') || this.lower.startsWith('hello') || this.lower.startsWith('what\'s up') || this.lower.startsWith('whats up')){
-            return this.greeting(userId);
+            return this.greet(userId, this.greetings, this.client);
         }
         else if(this.lower.includes('yo mama') || this.lower.includes('yo momma') || this.lower.includes('yo mamma')){
             return this.yoMama();
