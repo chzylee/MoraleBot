@@ -5,10 +5,21 @@ module.exports = class MorningRiver {
     constructor(){
         this.mama = new _mama();
         this.dad = new _dad();
+
+        this.greetings = [
+            'Salutations, my little lamb',
+            'A pleasure seeing you, my most delightful child',
+            'Whats new in the zoo cutie-poo?',
+
+        ]
     }
 
     setLower(text) {
         this.lower = text.toLowerCase();
+    }
+
+    greeting() {
+
     }
 
     yoMama() {
@@ -22,7 +33,10 @@ module.exports = class MorningRiver {
     }
 
     mrHandler(text) {
-        if(this.lower === 'yo mama' || this.lower === 'yo momma'){
+        if(this.lower === 'hi' || this.lower === 'hello'){
+            return this.greeting();
+        }
+        else if(this.lower.includes('yo mama') || this.lower.includes('yo momma') || this.lower.includes('yo mamma')){
             return this.yoMama();
         }
         else if(this.lower === 'pun' || this.lower === 'puns' || this.lower === 'dad joke'){
