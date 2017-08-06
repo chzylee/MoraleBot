@@ -40,32 +40,14 @@ function handleEvent(event) {
 
   // create a echoing text message
   var echo = { type: 'text', text: event.message.text };
-  var username = getName(event.source.userId);
-  console.log('username: ' + username);
   mr.setLower(event.message.text);
-  echo.text = mr.mrHandler(event.message.text, username);
+  echo.text = mr.mrHandler(event.message.text, event.source.userId);
   if(echo.text === null){
     return;
   }
 
   // use reply API
   return client.replyMessage(event.replyToken, echo);
-}
-
-// get name function
-function getName(userId) {
-    console.log('User id: ' + userId);
-    var name;
-    client.getProfile(userId)
-        .then((profile) => {
-            console.log(profile.displayName);
-            name = profile.displayName;
-        })
-        .catch((err) => {
-            console.log('error getting name');
-            name = 'Precious noodlehead';
-        });
-    return name;
 }
 
 // listen on port
