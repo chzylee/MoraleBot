@@ -56,8 +56,8 @@ function getName(userId) {
     console.log('User id: ' + userId);
     client.getProfile(userId)
         .then((profile) => {
-            console.log(profile.userId);
-            return profile.userId;
+            console.log(profile.displayName);
+            return profile.displayName;
         })
         .catch((err) => {
             console.log('error getting name');
