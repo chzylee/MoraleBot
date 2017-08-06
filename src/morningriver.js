@@ -1,4 +1,5 @@
 const line = require('@line/bot-sdk');
+const request = require('request');
 const _mama = require('./lib/yomama');
 const _dad = require('./lib/dadjoke');
 
@@ -6,9 +7,6 @@ module.exports = class MorningRiver {
     constructor(){
         this.mama = new _mama();
         this.dad = new _dad();
-        this.client = new line.Client({
-            channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN
-        });
 
         this.greetings = [
             'salutations my little lamb.',
@@ -31,19 +29,17 @@ module.exports = class MorningRiver {
     greeting(userId) {
         console.log('greeting user: ' + userId);
         var index = Math.ceil(Math.random() * (this.greetings.length - 1));
-        return this.client.getProfile(userId)
-            .then((profile) => {
-                console.log('name: ' + profile.displayName);
-                return profile.displayName;
-            })
-            .then((username) => {
-                console.log('returning ' + username);
-                return username + ', ' + this.greetings[index];
-            })
-            .catch((err) => {
-                console.log('error getting name: ' + err);
-                return 'Precious noodlehead';
-            });
+        var options = {
+            uri: "https://api.line.me/v2/bot/profile/" + userId,
+            method: "GET",
+            headers: {
+                channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN
+            }
+        }
+        request(options, function(error, response, body){
+            console.log(response);
+            return response.displayName;
+        });
     }
 
     yoMama() {
