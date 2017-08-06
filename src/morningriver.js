@@ -36,7 +36,7 @@ module.exports = class MorningRiver {
                 channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN
             }
         }
-        request(options, function(error, response, body){
+        return request(options, function(error, response, body){
             console.log(response);
             return response.displayName;
         });
