@@ -40,14 +40,29 @@ function handleEvent(event) {
 
   // create a echoing text message
   var echo = { type: 'text', text: event.message.text };
+  var username = getName(event.source.userId);
   mr.setLower(event.message.text);
-  echo.text = mr.mrHandler(event.message.text);
+  echo.text = mr.mrHandler(event.message.text, username);
   if(echo.text === null){
     return;
   }
 
   // use reply API
   return client.replyMessage(event.replyToken, echo);
+}
+
+// get name function
+function getName(userId) {
+    console.log('User id: ' + userId);
+    client.getProfile(userId)
+        .then((profile) => {
+            console.log(profile.userId);
+            return profile.userId;
+        })
+        .catch((err) => {
+            console.log('error getting name');
+            return 'Precious noodlehead';
+        });
 }
 
 // listen on port
