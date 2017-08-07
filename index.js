@@ -38,10 +38,6 @@ function handleEvent(event) {
     return Promise.resolve(null);
   }
 
-  var client = new line.Client({
-    channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN
-  });
-
   // create a echoing text message
   var echo = { type: 'text', text: event.message.text };
   mr.setLower(event.message.text);
