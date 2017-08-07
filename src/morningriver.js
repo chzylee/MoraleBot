@@ -2,12 +2,14 @@ const line = require('@line/bot-sdk');
 const _mama = require('./lib/yomama');
 const _dad = require('./lib/dadjoke');
 const _greetings = require('./lib/greeting');
+const _ellia = require('./lib/ellia');
 
 module.exports = class MorningRiver {
     constructor(){
         this.mama = new _mama();
         this.dad = new _dad();
         this.greetings = new _greetings();
+        this.ellia = new _ellia();
         // this.client = new line.Client({
         //     channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN
         // });
@@ -16,25 +18,6 @@ module.exports = class MorningRiver {
     setLower(text) {
         this.lower = text.toLowerCase();
     }
-
-    // getDisplayName(userId, client) {
-    //     return new Promise((resolve, reject) => {
-    //         var name = client.getProfile(userId)
-    //             .then((profile) => {
-    //                 return profile.displayName.toString();
-    //             });
-
-    //         Promise.all([name])
-    //             .then((name) => {
-    //                 console.log('got username: ' + name[0]);
-    //                 resolve(name[0]);
-    //             })
-    //             .catch((err) => {
-    //                 console.log('error getting name: ' + err);
-    //                 reject(err);
-    //             });   
-    //     });
-    // }
 
     greet(userId) {
         console.log('greeting user');
@@ -54,6 +37,12 @@ module.exports = class MorningRiver {
         return this.dad.jokes[index];
     }
 
+    swEllia() {
+        console.log('telling Ellia quote');
+        var index = Math.ceil(Math.random() * (this.ellia.quotes.length - 1));
+        return this.ellia.quotes[index];
+    }
+
     mrHandler(text, userId) {
         if(this.lower.startsWith('hi') || this.lower.startsWith('hello') || this.lower.startsWith('what\'s up') || this.lower.startsWith('whats up')){
             return this.greet();
@@ -64,5 +53,27 @@ module.exports = class MorningRiver {
         else if(this.lower.includes('pun') || this.lower.includes('puns') || this.lower.includes('dad joke')){
             return this.puns();
         }
+        else if(this.lower.includes('sw') || this.lower.includes('summoners war')){
+            return this.swEllia();
+        }
     }
 }
+
+// getDisplayName(userId, client) {
+    //     return new Promise((resolve, reject) => {
+    //         var name = client.getProfile(userId)
+    //             .then((profile) => {
+    //                 return profile.displayName.toString();
+    //             });
+
+    //         Promise.all([name])
+    //             .then((name) => {
+    //                 console.log('got username: ' + name[0]);
+    //                 resolve(name[0]);
+    //             })
+    //             .catch((err) => {
+    //                 console.log('error getting name: ' + err);
+    //                 reject(err);
+    //             });   
+    //     });
+    // }
