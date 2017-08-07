@@ -42,9 +42,7 @@ function handleEvent(event) {
   var echo = { type: 'text', text: event.message.text };
   mr.setLower(event.message.text);
   echo.text = mr.mrHandler(event.message.text, event.source.userId);
-  if(echo.text === null){
-    return;
-  }
+  console.log(echo.text);
 
   // use reply API
   return client.replyMessage(event.replyToken, echo);
