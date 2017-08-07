@@ -61,7 +61,7 @@ module.exports = class MorningRiver {
         else if(this.lower.includes('yo mama') || this.lower.includes('yo momma') || this.lower.includes('yo mamma')){
             return this.yoMama();
         }
-        else if(this.lower === 'pun' || this.lower === 'puns' || this.lower === 'dad joke'){
+        else if(this.lower.includes('pun') || this.lower.includes('puns') || this.lower.includes('dad joke')){
             return this.puns();
         }
     }
