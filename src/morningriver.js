@@ -86,14 +86,9 @@ module.exports = class MorningRiver {
                     console.log('error occurred: ' + err);  
                 });
 
-            Promise.all([greeting])
-                .then((greeting) => {
-                    console.log('greeting returned: ' + greeting[0]);
-                    return greeting[0].toString();
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
+            var greetMsg = Promise.all([greeting]);
+            console.log(greetMsg);
+            return greetMsg.value;
         }
         else if(this.lower.includes('yo mama') || this.lower.includes('yo momma') || this.lower.includes('yo mamma')){
             return this.yoMama();
