@@ -75,7 +75,7 @@ module.exports = class MorningRiver {
         return this.dad.jokes[index];
     }
 
-    mrHandler(echo, userId) {
+    mrHandler(text, userId) {
         if(this.lower.startsWith('hi') || this.lower.startsWith('hello') || this.lower.startsWith('what\'s up') || this.lower.startsWith('whats up')){
             this.greet(userId, this.greetings, this.client, this.getDisplayName)
                 .then((result) => {
