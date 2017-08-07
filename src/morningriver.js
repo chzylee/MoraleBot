@@ -75,7 +75,7 @@ module.exports = class MorningRiver {
         return this.dad.jokes[index];
     }
 
-    mrHandler(text, userId) {
+    mrHandler(echo, userId) {
         if(this.lower.startsWith('hi') || this.lower.startsWith('hello') || this.lower.startsWith('what\'s up') || this.lower.startsWith('whats up')){
             var greeting = this.greet(userId, this.greetings, this.client, this.getDisplayName)
                 .then((result) => {
@@ -86,15 +86,17 @@ module.exports = class MorningRiver {
                     console.log('error occurred: ' + err);  
                 });
 
-            var greetMsg = Promise.all([greeting]);
-            console.log(greetMsg);
-            return greetMsg.value;
+            Promise.all([greeting])
+                .then((greeting) => {
+                    console.log('greeting returned: ' + greeting[0]);
+                    echo.text = greeting[0];
+                })
         }
         else if(this.lower.includes('yo mama') || this.lower.includes('yo momma') || this.lower.includes('yo mamma')){
-            return this.yoMama();
+            echo.text = this.yoMama();
         }
         else if(this.lower === 'pun' || this.lower === 'puns' || this.lower === 'dad joke'){
-            return this.puns();
+            echo.text = this.puns();
         }
     }
 }
