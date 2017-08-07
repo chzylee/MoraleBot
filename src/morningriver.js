@@ -57,17 +57,20 @@ module.exports = class MorningRiver {
         else if(this.lower === 'see ya mr.'){
             return 'Peace out ma doods';
         }
-        else if(this.lower.startsWith('hi') || this.lower.startsWith('hello') || this.lower.startsWith('what\'s up') || this.lower.startsWith('whats up')){
-            return this.greet();
-        }
-        else if(this.lower.includes('yo mama') || this.lower.includes('yo momma') || this.lower.includes('yo mamma')){
-            return this.yoMama();
-        }
-        else if(this.lower.includes('pun') || this.lower.includes('puns') || this.lower.includes('dad joke')){
-            return this.puns();
-        }
-        else if(this.lower.includes('sw') || this.lower.includes('summoners war')){
-            return this.swEllia();
+
+        if(this.on){
+            if(this.lower.startsWith('hi') || this.lower.startsWith('hello') || this.lower.startsWith('what\'s up') || this.lower.startsWith('whats up')){
+                return this.greet();
+            }
+            else if(this.lower.includes('yo mama') || this.lower.includes('yo momma') || this.lower.includes('yo mamma')){
+                return this.yoMama();
+            }
+            else if(this.lower.includes('pun') || this.lower.includes('puns') || this.lower.includes('dad joke')){
+                return this.puns();
+            }
+            else if(this.lower.includes('sw') || this.lower.includes('summoners war')){
+                return this.swEllia();
+            }
         }
     }
 }
