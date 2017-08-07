@@ -6,6 +6,8 @@ const _ellia = require('./lib/ellia');
 
 module.exports = class MorningRiver {
     constructor(){
+        this.on = true;
+
         this.mama = new _mama();
         this.dad = new _dad();
         this.greetings = new _greetings();
@@ -44,7 +46,18 @@ module.exports = class MorningRiver {
     }
 
     mrHandler(text, userId) {
-        if(this.lower.startsWith('hi') || this.lower.startsWith('hello') || this.lower.startsWith('what\'s up') || this.lower.startsWith('whats up')){
+        if(this.lower === 'hey mr.'){
+            this.on = true;
+            return 'Only my dad calls me that';
+        }
+        else if(this.lower === 'goodnight mr.'){
+            this.on = false;
+            return 'But its not my bedtime yet ;-;';
+        }
+        else if(this.lower === 'see ya mr.'){
+            return 'Peace out ma doods';
+        }
+        else if(this.lower.startsWith('hi') || this.lower.startsWith('hello') || this.lower.startsWith('what\'s up') || this.lower.startsWith('whats up')){
             return this.greet();
         }
         else if(this.lower.includes('yo mama') || this.lower.includes('yo momma') || this.lower.includes('yo mamma')){
