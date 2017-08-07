@@ -28,28 +28,38 @@ module.exports = class MorningRiver {
         this.lower = text.toLowerCase();
     }
 
-    // getName(userId) {
-    //     thi
-    // }
-
-    greet(userId, greetings, client) {
+    getDisplayName(userId, client) {
         return new Promise((resolve, reject) => {
-            console.log('greeting user: ' + userId);
-            var index = Math.ceil(Math.random() * (greetings.length - 1));
             var name = client.getProfile(userId)
-                    .then((profile) => {
-                        return profile.displayName.toString();
-                    });
+                .then((profile) => {
+                    return profile.displayName.toString();
+                });
 
             Promise.all([name])
                 .then((name) => {
-                    console.log(name[0] + ', ' + greetings[index]);
-                    resolve(name[0] + ', ' + greetings[index]);
+                    console.log('got username: ' + name[0]);
+                    resolve(name[0]);
                 })
                 .catch((err) => {
                     console.log('error getting name: ' + err);
                     reject(err);
                 });   
+        });
+    }
+
+    greet(userId, greetings, client, nameFunc) {
+        console.log('greeting user');
+        var index = Math.ceil(Math.random() * (greetings.length - 1));
+        return new Promise((resolve, reject) => {
+            nameFunc(userId, client)
+                .then((name) => {
+                    console.log('greeting user ' + name);
+                    resolve(name + ', ' + greetings[index]);
+                })
+                .catch((err) => {
+                    console.log('error getting greeting: ' + err);
+                    reject(err);
+                });
         });
     }
 
@@ -67,7 +77,10 @@ module.exports = class MorningRiver {
 
     mrHandler(text, userId) {
         if(this.lower.startsWith('hi') || this.lower.startsWith('hello') || this.lower.startsWith('what\'s up') || this.lower.startsWith('whats up')){
-            return this.greet(userId, this.greetings, this.client);
+            return this.greet(userId, this.greetings, this.client, this.getDisplayName)
+            .then((greetMsg) => {
+                return greetMsg;  
+            });
         }
         else if(this.lower.includes('yo mama') || this.lower.includes('yo momma') || this.lower.includes('yo mamma')){
             return this.yoMama();
