@@ -79,7 +79,10 @@ module.exports = class MorningRiver {
         if(this.lower.startsWith('hi') || this.lower.startsWith('hello') || this.lower.startsWith('what\'s up') || this.lower.startsWith('whats up')){
             return this.greet(userId, this.greetings, this.client, this.getDisplayName)
             .then((greetMsg) => {
-                return greetMsg;  
+                return greetMsg.toString();  
+            })
+            .catch((err) => {
+                console.log('error occurred: ' + err);  
             });
         }
         else if(this.lower.includes('yo mama') || this.lower.includes('yo momma') || this.lower.includes('yo mamma')){
