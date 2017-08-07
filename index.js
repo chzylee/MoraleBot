@@ -38,11 +38,18 @@ function handleEvent(event) {
     return Promise.resolve(null);
   }
 
+  var client = new line.Client({
+    channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN
+  });
+
   // create a echoing text message
   var echo = { type: 'text', text: event.message.text };
   mr.setLower(event.message.text);
   echo.text = mr.mrHandler(echo.text, event.source.userId);
   console.log(echo.text);
+  if(echo.text === 'Peace out ma doods'){
+      return client.leaveGroup(event.source.groupId);
+  }
 
   // use reply API
   return client.replyMessage(event.replyToken, echo);
