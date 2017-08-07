@@ -48,7 +48,7 @@ function handleEvent(event) {
   echo.text = mr.mrHandler(echo.text, event.source.userId);
   console.log(echo.text);
   if(echo.text === 'Peace out ma doods'){
-      return client.leaveGroup(event.source.groupId);
+      client.leaveGroup(event.source.groupId);
   }
 
   // use reply API
