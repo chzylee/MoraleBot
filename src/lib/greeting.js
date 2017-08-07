@@ -10,7 +10,7 @@ module.exports = class Greetings {
             'You are well met.',
             'Hail to your grace.',
             'Good morrow sweet kitten.',
-            'Whats poppin my dood??'
+            'Whats poppin ma dood??'
         ]
     }
 }
