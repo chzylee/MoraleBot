@@ -59,7 +59,7 @@ module.exports = class MorningRiver {
         }
 
         if(this.on){
-            if(this.lower.startsWith('hi') || this.lower.startsWith('hello') || this.lower.startsWith('what\'s up') || this.lower.startsWith('whats up')){
+            if(this.lower.startsWith('hi') || this.lower.includes('hello') || this.lower.startsWith('what\'s up') || this.lower.startsWith('whats up')){
                 return this.greet();
             }
             else if(this.lower.includes('yo mama') || this.lower.includes('yo momma') || this.lower.includes('yo mamma')){
