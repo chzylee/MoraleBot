@@ -40,7 +40,6 @@ function handleEvent(event) {
 
   // create a echoing text message
   var echo = { type: 'text', text: event.message.text };
-  mr.setLower(event.message.text);
   echo.text = mr.mrHandler(echo.text, event.source.userId);
   console.log(echo.text);
   if(echo.text === 'Peace out ma doods'){

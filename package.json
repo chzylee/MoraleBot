@@ -4,7 +4,7 @@
   "description": "Morale boosting joke bot",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "jasmine"
   },
   "repository": {
     "type": "git",
@@ -19,5 +19,8 @@
   "dependencies": {
     "@line/bot-sdk": "^2.0.0",
     "express": "^4.15.3"
+  },
+  "devDependencies": {
+    "jasmine": "^2.7.0"
   }
 }

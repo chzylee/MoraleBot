@@ -21,6 +21,24 @@ module.exports = class MorningRiver {
         this.lower = text.toLowerCase();
     }
 
+    contains(options){
+        for(var i = 0; i < options.length; i++){        // for all options
+            if(this.lower.includes(options[i])) {   // if lower contains one of options
+                return true; // does contain one of options
+            }
+        }
+        return false; // if none of the options returned true
+    }
+
+    startsWith(options){
+        for(var i = 0; i < options.length; i++){        // for all options
+            if(this.lower.startsWith(options[i])) {   // if lower starts with one of options
+                return true; // does start with one of options
+            }
+        }
+        return false; // if none of the options returned true
+    }
+
     greet(userId) {
         console.log('greeting user');
         var index = Math.ceil(Math.random() * (this.greetings.messages.length - 1));
@@ -45,7 +63,8 @@ module.exports = class MorningRiver {
         return this.ellia.quotes[index];
     }
 
-    mrHandler(text, userId) {
+    mrHandler(text) {
+        this.setLower(text);
         if(this.lower === 'hey mr.'){
             this.on = true;
             return 'Only my dad calls me that';
@@ -59,17 +78,20 @@ module.exports = class MorningRiver {
         }
 
         if(this.on){
-            if(this.lower.startsWith('hi') || this.lower.includes('hello') || this.lower.startsWith('what\'s up') || this.lower.startsWith('whats up')){
+            if(this.startsWith(['hi', 'what\'s up', 'whats up']) || this.contains(['hello'])){
                 return this.greet();
             }
-            else if(this.lower.includes('yo mama') || this.lower.includes('yo momma') || this.lower.includes('yo mamma')){
+            else if(this.contains(['yo mama', 'yo mamma', 'yo momma'])){
                 return this.yoMama();
             }
-            else if(this.lower.includes('pun') || this.lower.includes('puns') || this.lower.includes('dad joke')){
+            else if(this.contains(['pun', 'puns', 'dad joke'])){
                 return this.puns();
             }
-            else if(this.lower.includes('sw') || this.lower.includes('summoners war')){
+            else if(this.contains(['sw', 'summoners war'])){
                 return this.swEllia();
+            }
+            else if(this.contains(['saltcity'])){
+                return 'SALTCITY';
             }
         }
     }
