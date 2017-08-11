@@ -36,7 +36,8 @@ function handleEvent(event) {
   if (event.type !== 'message' || event.message.type !== 'text') {
     // ignore non-text-message event
     if(event.type === 'message'){
-      console.log('message object: ' + event.message);
+      // console.log('message object: ' + event.message);
+      console.log('message type: ' + event.message.type);
     }
     return Promise.resolve(null);
   }
