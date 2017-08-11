@@ -38,6 +38,10 @@ function handleEvent(event) {
     if(event.type === 'message'){
       // console.log('message object: ' + event.message);
       console.log('message type: ' + event.message.type);
+      if(message.type === 'sticker'){
+        console.log('package id: ' + event.message.packageId);
+        console.log('sticker id: ' + event.message.stickerId);
+      }
     }
     return Promise.resolve(null);
   }
