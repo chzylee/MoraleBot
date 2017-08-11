@@ -131,6 +131,9 @@ module.exports = class MorningRiver {
             else if(this.contains(['saltcity'])){
                 return this.formTextReply('SALTCITY');
             }
+            else if(this.contains(['let\'s get down to business', 'lets get down to business'])){
+                return this.formTextReply('To defeat the huns');
+            }
             else if(this.contains(['fight', 'rumble'])){
                 return this.mrFightSticker();
             }
