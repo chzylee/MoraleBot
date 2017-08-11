@@ -123,9 +123,9 @@ module.exports = class MorningRiver {
     mrHighFive(message){
         console.log('handling sticker');
         var reply = {
-            "type": message.type,
-            "packageId": message.packageId,
-            "stickerId": message.stickerId
+            "type": "sticker",
+            "packageId": "2",
+            "stickerId": "516"
         }
         return reply;
     }
