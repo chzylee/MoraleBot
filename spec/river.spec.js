@@ -62,6 +62,12 @@ describe('Morning River bot', function() {
         expect(mr.ellia.quotes.includes(reply)).toBe(true);
     });
 
+    it('returns lurk message after reading "lurk" in sentence', function(){
+        var reply = mr.mrHandler('whos lurking?');
+        console.log('reply to "whos lurking?": ' + reply);
+        expect(mr.lurk.messages.includes(reply)).toBe(true);
+    });
+
     it('returns chant of "Friday!" after reading "FRIDAY" in sentence', function(){
         var reply = mr.mrHandler('Im so glad its FRIDAY!!!');
         console.log('reply to "Im so glad its FRIDAY!!!": ' + reply);

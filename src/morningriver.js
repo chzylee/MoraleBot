@@ -3,6 +3,7 @@ const _mama = require('./lib/yomama');
 const _dad = require('./lib/dadjoke');
 const _greetings = require('./lib/greeting');
 const _ellia = require('./lib/ellia');
+const _lurk = require('./lib/lurk');
 
 module.exports = class MorningRiver {
     constructor(){
@@ -12,6 +13,7 @@ module.exports = class MorningRiver {
         this.dad = new _dad();
         this.greetings = new _greetings();
         this.ellia = new _ellia();
+        this.lurk = new _lurk();
         // this.client = new line.Client({
         //     channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN
         // });
@@ -63,6 +65,12 @@ module.exports = class MorningRiver {
         return this.ellia.quotes[index];
     }
 
+    lurkers(){
+        console.log('coming out of lurking');
+        var index = Math.ceil(Math.random() * (this.lurk.messages.length - 1));
+        return this.lurk.messages[index];
+    }
+
     mrHandler(text){
         this.setLower(text);
         if(this.lower === 'hey mr.'){
@@ -89,6 +97,9 @@ module.exports = class MorningRiver {
             }
             else if(this.contains(['sw', 'summoners war'])){
                 return this.swEllia();
+            }
+            else if(this.contains(['lurk'])){
+                return this.lurkers();
             }
             else if(this.contains(['saltcity'])){
                 return 'SALTCITY';
