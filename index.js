@@ -45,6 +45,7 @@ function handleEvent(event) {
   if(event.message.type === 'sticker'){
     console.log('package id: ' + event.message.packageId);
     console.log('sticker id: ' + event.message.stickerId);
+    console.log('whole message:' + JSON.stringify(event.message));
 
     var sticker = mr.mrStickerHandler(event.message);
     console.log(sticker);

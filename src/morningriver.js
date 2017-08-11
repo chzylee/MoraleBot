@@ -19,6 +19,8 @@ module.exports = class MorningRiver {
         // });
     }
 
+    // UTILS
+
     setLower(text){
         this.lower = text.toLowerCase();
     }
@@ -40,6 +42,8 @@ module.exports = class MorningRiver {
         }
         return false; // if none of the options returned true
     }
+
+    // MESSAGES
 
     greet(userId){
         console.log('greeting user');
@@ -114,16 +118,22 @@ module.exports = class MorningRiver {
         }
     }
 
+    // STICKER FUNCTIONS
+
+    mrHighFive(message){
+        console.log('handling sticker');
+        var reply = {
+            "type": message.type,
+            "packageId": message.packageId,
+            "stickerId": message.stickerId
+        }
+        return reply;
+    }
+
     mrStickerHandler(message){
         console.log('handling sticker');
         if(message.packageId === "2000014" && message.stickerId === "690879"){
-            console.log('replying to high five sticker');
-            // var highfive = {
-            //     "type": "sticker",
-            //     "packageId": "2000014",
-            //     "stickerId": "690879"
-            // }
-            return message;
+            return this.mrHighFive(message);
         }
     }
 }
