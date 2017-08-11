@@ -115,7 +115,9 @@ module.exports = class MorningRiver {
     }
 
     mrStickerHandler(message){
+        console.log('handling sticker');
         if(message.packageId === "2000014" && message.stickerId === "690879"){
+            console.log('replying to high five sticker');
             var highfive = {
                 "type": "sticker",
                 "packageId": "2000014",

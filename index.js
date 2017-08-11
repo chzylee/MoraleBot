@@ -46,7 +46,10 @@ function handleEvent(event) {
     console.log('package id: ' + event.message.packageId);
     console.log('sticker id: ' + event.message.stickerId);
 
-    return client.replyMessage(event.replyToken, mr.mrStickerHandler(event.message));
+    var sticker = mr.mrStickerHandler(event.message);
+    if(sticher !== undefined){
+      return client.replyMessage(event.replyToken, sticker);
+    }
   }
 
   // create a echoing text message
