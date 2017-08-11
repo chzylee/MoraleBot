@@ -4,6 +4,7 @@ const _dad = require('./lib/dadjoke');
 const _greetings = require('./lib/greeting');
 const _ellia = require('./lib/ellia');
 const _lurk = require('./lib/lurk');
+const _stickerPack = require('./lib/stickers');
 
 module.exports = class MorningRiver {
     constructor(){
@@ -14,6 +15,7 @@ module.exports = class MorningRiver {
         this.greetings = new _greetings();
         this.ellia = new _ellia();
         this.lurk = new _lurk();
+        this.stickerPack = new _stickerPack();
         // this.client = new line.Client({
         //     channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN
         // });
@@ -122,12 +124,12 @@ module.exports = class MorningRiver {
 
     mrHighFive(message){
         console.log('handling sticker');
-        var reply = {
-            "type": "sticker",
-            "packageId": "2",
-            "stickerId": "516"
-        }
-        return reply;
+        return this.stickerPack.highFive;
+    }
+
+    mrFightSticker(){
+        var index = Math.ceil(Math.random() * (this.stickerPack.fight.length - 1));
+        return this.stickerPack.fight[index];
     }
 
     mrStickerHandler(message){

@@ -62,6 +62,9 @@ function handleEvent(event) {
       client.replyMessage(event.replyToken, echo)
       return client.leaveGroup(event.source.groupId);
   }
+  if(echo.text.type){
+    return client.replyMessage(event.replyToken, echo.text);
+  }
 
   // use reply API
   return client.replyMessage(event.replyToken, echo);
