@@ -134,6 +134,9 @@ module.exports = class MorningRiver {
             else if(this.contains(['fight', 'rumble'])) {
                 return this.mrFightSticker();
             }
+            else if(this.contains(['nafag', 'inappropriate', 'lewd'])) {
+                return this.mrFightSticker();
+            }
             else if(text.includes('FRIDAY')){ // must be in all caps
                 return this.formTextReply('Friday! Friday! Friday! Friday! Whooooooooooooo!');
             }
@@ -143,13 +146,20 @@ module.exports = class MorningRiver {
     // STICKER FUNCTIONS
 
     mrHighFive(message){
-        console.log('handling sticker');
+        console.log('sending high five');
         return this.stickerPack.highFive;
     }
 
     mrFightSticker(){
+        console.log('fighting');
         var index = Math.ceil(Math.random() * (this.stickerPack.fight.length - 1));
         return this.stickerPack.fight[index];
+    }
+
+    mrNAFAG(){
+        console.log('reporting NAFAG content');
+        var index = Math.ceil(Math.random() * (this.stickerPack.nafag.length - 1));
+        return this.stickerPack.nafag[index];
     }
 
     mrStickerHandler(message){

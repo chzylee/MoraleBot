@@ -126,7 +126,14 @@ describe('Morning River bot', function(){
         expect(reply).toEqual(mr.stickerPack.highFive);
     });
 
-    it('returns fight sticker after reading fight in sentence', function() {
+    it('returns fight sticker after reading "fight" in sentence', function() {
+        message.type = "text";
+        message.text = "fight me kid";
+        var reply = mr.mrHandler(message);
+        expect(mr.stickerPack.fight.includes(reply)).toBe(true);
+    });
+
+    it('returns nafag sticker after reading "NAFAG" in sentence', function() {
         message.type = "text";
         message.text = "fight me kid";
         var reply = mr.mrHandler(message);

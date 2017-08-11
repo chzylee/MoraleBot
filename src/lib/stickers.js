@@ -27,5 +27,57 @@ module.exports = class Stickers {
             "packageId": "2",
             "stickerId": "516"
         }
+        this.nafag = [
+            {
+                "type": "sticker",
+                "packageId": "2",
+                "stickerId": "19"
+            },
+            {
+                "type": "sticker",
+                "packageId": "2",
+                "stickerId": "33"
+            },
+            {
+                "type": "sticker",
+                "packageId": "2",
+                "stickerId": "39"
+            },
+            {
+                "type": "sticker",
+                "packageId": "2",
+                "stickerId": "173"
+            },
+            {
+                "type": "sticker",
+                "packageId": "2",
+                "stickerId": "524"
+            },
+            {
+                "type": "sticker",
+                "packageId": "2",
+                "stickerId": "527"
+            },
+            {
+                "type": "sticker",
+                "packageId": "3",
+                "stickerId": "185"
+            },
+            {
+                "type": "sticker",
+                "packageId": "3",
+                "stickerId": "187"
+            },
+            {
+                "type": "sticker",
+                "packageId": "3",
+                "stickerId": "188"
+            },
+            {
+                "type": "sticker",
+                "packageId": "3",
+                "stickerId": "190"
+            }
+        ]
     }
 }
