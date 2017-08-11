@@ -135,7 +135,7 @@ module.exports = class MorningRiver {
                 return this.mrFightSticker();
             }
             else if(this.contains(['nafag', 'inappropriate', 'lewd'])) {
-                return this.mrFightSticker();
+                return this.mrNAFAG();
             }
             else if(text.includes('FRIDAY')){ // must be in all caps
                 return this.formTextReply('Friday! Friday! Friday! Friday! Whooooooooooooo!');
