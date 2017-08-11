@@ -84,6 +84,9 @@ module.exports = class MorningRiver {
         else if(this.lower === 'see ya mr.'){
             return 'Peace out ma doods';
         }
+        else if(this.startsWith(['mr. say'])){
+            return text.replace(/[Mm]r. [Ss]ay /g, '');
+        }
 
         if(this.on){
             if(this.startsWith(['hi', 'what\'s up', 'whats up']) || this.contains(['hello'])){

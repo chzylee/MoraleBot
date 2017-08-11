@@ -74,5 +74,11 @@ describe('Morning River bot', function() {
         expect(reply).toBe('Friday! Friday! Friday! Friday! Whooooooooooooo!');
     });
 
+    it('echoes message when told to say something', function(){
+        var reply = mr.mrHandler('Mr. Say hello world');
+        console.log('reply to "mr. say hello world": ' + reply);
+        expect(reply).toBe('hello world');
+    });
+
 });
 
