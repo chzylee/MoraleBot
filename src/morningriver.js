@@ -17,7 +17,7 @@ module.exports = class MorningRiver {
         // });
     }
 
-    setLower(text) {
+    setLower(text){
         this.lower = text.toLowerCase();
     }
 
@@ -39,31 +39,31 @@ module.exports = class MorningRiver {
         return false; // if none of the options returned true
     }
 
-    greet(userId) {
+    greet(userId){
         console.log('greeting user');
         var index = Math.ceil(Math.random() * (this.greetings.messages.length - 1));
         return this.greetings.messages[index];
     }
 
-    yoMama() {
+    yoMama(){
         console.log('telling yo mama joke');
         var index = Math.ceil(Math.random() * (this.dad.jokes.length - 1));
         return this.mama.jokes[index];
     }
 
-    puns() {
+    puns(){
         console.log('telling dad joke');
         var index = Math.ceil(Math.random() * (this.dad.jokes.length - 1));
         return this.dad.jokes[index];
     }
 
-    swEllia() {
+    swEllia(){
         console.log('telling Ellia quote');
         var index = Math.ceil(Math.random() * (this.ellia.quotes.length - 1));
         return this.ellia.quotes[index];
     }
 
-    mrHandler(text) {
+    mrHandler(text){
         this.setLower(text);
         if(this.lower === 'hey mr.'){
             this.on = true;
@@ -92,6 +92,9 @@ module.exports = class MorningRiver {
             }
             else if(this.contains(['saltcity'])){
                 return 'SALTCITY';
+            }
+            else if(text.includes('FRIDAY')){ // must be in all caps
+                return 'Friday! Friday! Friday! Friday! Whooooooooooooo!';
             }
         }
     }
