@@ -22,11 +22,13 @@ module.exports = class Stickers {
                 "stickerId": "520"
             }
         ]
+
         this.highFive = {
             "type": "sticker",
             "packageId": "2",
             "stickerId": "516"
         }
+
         this.nafag = [
             {
                 "type": "sticker",
@@ -78,6 +80,39 @@ module.exports = class Stickers {
                 "packageId": "3",
                 "stickerId": "190"
             }
+        ]
+
+        this.congrats = [
+            {
+                "type": "sticker",
+                "packageId": "1",
+                "stickerId": "14"
+            },
+            {
+                "type": "sticker",
+                "packageId": "1",
+                "stickerId": "125"
+            },
+            {
+                "type": "sticker",
+                "packageId": "1",
+                "stickerId": "132"
+            },
+            {
+                "type": "sticker",
+                "packageId": "1",
+                "stickerId": "138"
+            },
+            {
+                "type": "sticker",
+                "packageId": "2",
+                "stickerId": "144"
+            },
+            {
+                "type": "sticker",
+                "packageId": "2",
+                "stickerId": "171"
+            },
         ]
     }
 }

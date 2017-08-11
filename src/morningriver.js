@@ -137,6 +137,9 @@ module.exports = class MorningRiver {
             else if(this.contains(['nafag', 'inappropriate', 'lewd'])) {
                 return this.mrNAFAG();
             }
+            else if(this.contains(['congratz', 'congrats', 'gz', 'jee zee'])){
+                return this.mrCongratulations();
+            }
             else if(text.includes('FRIDAY')){ // must be in all caps
                 return this.formTextReply('Friday! Friday! Friday! Friday! Whooooooooooooo!');
             }
@@ -163,6 +166,12 @@ module.exports = class MorningRiver {
         console.log('reporting NAFAG content');
         var index = Math.ceil(Math.random() * (this.stickerPack.nafag.length - 1));
         return this.stickerPack.nafag[index];
+    }
+
+    mrCongratulations(){
+        console.log('congratulating');
+        var index = Math.ceil(Math.random() * (this.stickerPack.congrats.length - 1));
+        return this.stickerPack.congrats[index];
     }
 
     mrStickerHandler(message){
