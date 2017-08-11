@@ -157,5 +157,12 @@ describe('Morning River bot', function(){
         expect(mr.stickerPack.congrats.includes(reply)).toBe(true);
     });
 
+    it('returns happy birthday sticker after reading it is somebodys birthday', function(){
+        message.type = "text";
+        message.text = "happy birthday dood";
+        var reply = mr.mrHandler(message);
+        expect(reply).toBe(mr.stickerPack.hbd);
+    });
+
 });
 

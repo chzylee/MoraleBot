@@ -131,14 +131,17 @@ module.exports = class MorningRiver {
             else if(this.contains(['saltcity'])){
                 return this.formTextReply('SALTCITY');
             }
-            else if(this.contains(['fight', 'rumble'])) {
+            else if(this.contains(['fight', 'rumble'])){
                 return this.mrFightSticker();
             }
-            else if(this.contains(['nafag', 'inappropriate', 'lewd'])) {
+            else if(this.contains(['nafag', 'inappropriate', 'lewd'])){
                 return this.mrNAFAG();
             }
             else if(this.contains(['congratz', 'congrats', 'gz', 'jee zee'])){
                 return this.mrCongratulations();
+            }
+            else if(this.contains(['happy birthday', 'hbd', 'my birthday', '\'s birthday'])){
+                return this.mrBirthday();
             }
             else if(text.includes('FRIDAY')){ // must be in all caps
                 return this.formTextReply('Friday! Friday! Friday! Friday! Whooooooooooooo!');
@@ -172,6 +175,11 @@ module.exports = class MorningRiver {
         console.log('congratulating');
         var index = Math.ceil(Math.random() * (this.stickerPack.congrats.length - 1));
         return this.stickerPack.congrats[index];
+    }
+
+    mrBirthday(){
+        console.log('birthday happying');
+        return this.stickerPack.hbd;
     }
 
     mrStickerHandler(message){

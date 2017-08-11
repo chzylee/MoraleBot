@@ -114,5 +114,11 @@ module.exports = class Stickers {
                 "stickerId": "171"
             },
         ]
+
+        this.hbd = {
+            "type": "sticker",
+            "packageId": "1",
+            "stickerId": "427"
+        }
     }
 }
