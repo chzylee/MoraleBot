@@ -80,5 +80,15 @@ describe('Morning River bot', function() {
         expect(reply).toBe('hello world');
     });
 
+    it('returns (high five) emoji after reading (high five) emoji', function() {
+        var highfive = {
+            "type": "sticker",
+            "packageId": "2000014",
+            "stickerId": "690879"
+        }
+        var reply = mr.mrStickerHandler(highfive);
+        expect(reply).toEqual(highfive);
+    });
+
 });
 

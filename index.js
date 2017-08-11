@@ -33,17 +33,20 @@ app.post('/webhook', line.middleware(config), (req, res) => {
 
 // event handler
 function handleEvent(event) {
-  if (event.type !== 'message' || event.message.type !== 'text') {
+  if (event.type !== 'message' || event.message.type !== 'text' || event.message.type !== 'sticker') {
     // ignore non-text-message event
     if(event.type === 'message'){
       // console.log('message object: ' + event.message);
       console.log('message type: ' + event.message.type);
-      if(event.message.type === 'sticker'){
-        console.log('package id: ' + event.message.packageId);
-        console.log('sticker id: ' + event.message.stickerId);
-      }
     }
     return Promise.resolve(null);
+  }
+
+  if(event.message.type === 'sticker'){
+    console.log('package id: ' + event.message.packageId);
+    console.log('sticker id: ' + event.message.stickerId);
+
+    return client.replyMessage(event.replyToken, mr.mrStickerHandler(event.message));
   }
 
   // create a echoing text message

@@ -113,6 +113,17 @@ module.exports = class MorningRiver {
             }
         }
     }
+
+    mrStickerHandler(message){
+        if(message.packageId === "2000014" && message.stickerId === "690879"){
+            var highfive = {
+                "type": "sticker",
+                "packageId": "2000014",
+                "stickerId": "690879"
+            }
+            return highfive;
+        }
+    }
 }
 
 // getDisplayName(userId, client) {
