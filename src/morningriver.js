@@ -114,6 +114,9 @@ module.exports = class MorningRiver {
             else if(this.contains(['saltcity'])){
                 return 'SALTCITY';
             }
+            else if(this.contains['fight', 'rumble']) {
+                return this.mrFightSticker();
+            }
             else if(text.includes('FRIDAY')){ // must be in all caps
                 return 'Friday! Friday! Friday! Friday! Whooooooooooooo!';
             }
@@ -134,8 +137,10 @@ module.exports = class MorningRiver {
 
     mrStickerHandler(message){
         console.log('handling sticker');
-        if(message.packageId === "2000014" && message.stickerId === "690879"){
-            return this.mrHighFive(message);
+        if(this.on){
+            if(message.packageId === "2000014" && message.stickerId === "690879"){
+                return this.mrHighFive(message);
+            }
         }
     }
 }
