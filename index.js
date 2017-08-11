@@ -47,7 +47,7 @@ function handleEvent(event) {
     console.log('sticker id: ' + event.message.stickerId);
 
     var sticker = mr.mrStickerHandler(event.message);
-    if(sticher !== undefined){
+    if(sticker !== undefined){
       return client.replyMessage(event.replyToken, sticker);
     }
   }
