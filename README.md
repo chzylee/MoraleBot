@@ -1,6 +1,6 @@
 # Morning-River Bot
 
-Peaceful as a morning river, and graceful as a Big Mac cruising thru yo mama's intestines, Morning-River bestows joy upon its companions through morale-boosting humour.
+Peaceful as a morning river, and graceful as a Big Mac cruising thru yo mama's intestines, Morning-River bestows joy upon its companions through morale-boosting humour. He lives in the Insidious guild chat, but he can be added to other rooms.
 
 ## How to use
 
