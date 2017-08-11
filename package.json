@@ -1,6 +1,6 @@
 {
   "name": "moralebot",
-  "version": "1.0.0",
+  "version": "1.5.0",
   "description": "Morale boosting joke bot",
   "main": "index.js",
   "scripts": {
