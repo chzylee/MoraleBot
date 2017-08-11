@@ -85,7 +85,8 @@ module.exports = class MorningRiver {
             return 'Peace out ma doods';
         }
         else if(this.startsWith(['mr. say'])){
-            return text.replace(/[Mm]r. [Ss]ay /g, '');
+            var echo = text.replace(/[Mm]r. [Ss]ay /g, '');
+            return echo;
         }
 
         if(this.on){
