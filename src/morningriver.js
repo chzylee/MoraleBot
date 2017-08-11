@@ -118,12 +118,12 @@ module.exports = class MorningRiver {
         console.log('handling sticker');
         if(message.packageId === "2000014" && message.stickerId === "690879"){
             console.log('replying to high five sticker');
-            var highfive = {
-                "type": "sticker",
-                "packageId": "2000014",
-                "stickerId": "690879"
-            }
-            return highfive;
+            // var highfive = {
+            //     "type": "sticker",
+            //     "packageId": "2000014",
+            //     "stickerId": "690879"
+            // }
+            return message;
         }
     }
 }
