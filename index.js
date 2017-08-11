@@ -47,7 +47,7 @@ function handleEvent(event) {
   console.log('message object: ' + JSON.stringify(event.message));
   if(reply.type === 'text'){
     if(reply.text === 'Peace out ma doods'){
-      client.replyMessage(event.replyToken, echo)
+      client.replyMessage(event.replyToken, reply);
       return client.leaveGroup(event.source.groupId);
     }
   }
