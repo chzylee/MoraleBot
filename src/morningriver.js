@@ -113,7 +113,7 @@ module.exports = class MorningRiver {
         }
 
         if(this.on){
-            if(this.startsWith(['hi', 'what\'s up', 'whats up']) || this.contains(['hello'])){
+            if(this.startsWith(['hi', 'what\'s up', 'whats up', 'good morning']) || this.contains(['hello'])){
                 return this.greet();
             }
             else if(this.contains(['yo mama', 'yo mamma', 'yo momma'])){
