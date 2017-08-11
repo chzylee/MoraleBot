@@ -51,9 +51,11 @@ function handleEvent(event) {
       return client.leaveGroup(event.source.groupId);
     }
   }
-
-  // use reply API
-  return client.replyMessage(event.replyToken, reply);
+  
+  if(reply !== undefined){
+    // use reply API
+    return client.replyMessage(event.replyToken, reply);
+  }
 }
 
 // listen on port
