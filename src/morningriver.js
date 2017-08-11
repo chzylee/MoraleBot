@@ -134,7 +134,7 @@ module.exports = class MorningRiver {
             else if(this.contains(['fight', 'rumble'])){
                 return this.mrFightSticker();
             }
-            else if(this.contains(['nafag', 'inappropriate', 'lewd'])){
+            else if(this.contains(['nafag', 'inappropriate', 'lewd', 'nsfw'])){
                 return this.mrNAFAG();
             }
             else if(this.contains(['congratz', 'congrats', 'gz', 'jee zee'])){
