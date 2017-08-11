@@ -35,6 +35,9 @@ app.post('/webhook', line.middleware(config), (req, res) => {
 function handleEvent(event) {
   if (event.type !== 'message' || event.message.type !== 'text') {
     // ignore non-text-message event
+    if(event.type === 'message'){
+      console.log('message object: ' + event.message);
+    }
     return Promise.resolve(null);
   }
 
