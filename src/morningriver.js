@@ -45,6 +45,16 @@ module.exports = class MorningRiver {
         return false; // if none of the options returned true
     }
 
+    mrHandler(message){
+        if(message.type === 'text'){
+            this.setLower(message.text);
+            return this.mrTextHandler(message.text);
+        }
+        else if(message.type === 'sticker'){
+            return this.mrStickerHandler(message);
+        }
+    }
+
     // MESSAGES
 
     greet(userId){
@@ -77,7 +87,7 @@ module.exports = class MorningRiver {
         return this.lurk.messages[index];
     }
 
-    mrHandler(text){
+    mrTextHandler(text){
         this.setLower(text);
         if(this.lower === 'hey mr.'){
             this.on = true;
@@ -114,7 +124,7 @@ module.exports = class MorningRiver {
             else if(this.contains(['saltcity'])){
                 return 'SALTCITY';
             }
-            else if(this.contains['fight', 'rumble']) {
+            else if(this.contains(['fight', 'rumble'])) {
                 return this.mrFightSticker();
             }
             else if(text.includes('FRIDAY')){ // must be in all caps

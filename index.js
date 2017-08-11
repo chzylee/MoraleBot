@@ -42,32 +42,18 @@ function handleEvent(event) {
     return Promise.resolve(null);
   }
 
-  if(event.message.type === 'sticker'){
-    console.log('package id: ' + event.message.packageId);
-    console.log('sticker id: ' + event.message.stickerId);
-    console.log('whole message:' + JSON.stringify(event.message));
-
-    var sticker = mr.mrStickerHandler(event.message);
-    console.log(sticker);
-    if(sticker !== undefined){
-      return client.replyMessage(event.replyToken, sticker);
+  // handle message
+  var reply = mr.mrHandler(event.message);
+  console.log('message object: ' + JSON.stringify(event.message));
+  if(reply.type === 'text'){
+    if(reply.text === 'Peace out ma doods'){
+      client.replyMessage(event.replyToken, echo)
+      return client.leaveGroup(event.source.groupId);
     }
   }
 
-  // create a echoing text message
-  var echo = { type: 'text', text: event.message.text };
-  echo.text = mr.mrHandler(echo.text, event.source.userId);
-  console.log('message object: ' + event.message);
-  if(echo.text === 'Peace out ma doods'){
-      client.replyMessage(event.replyToken, echo)
-      return client.leaveGroup(event.source.groupId);
-  }
-  if(echo.text.type){
-    return client.replyMessage(event.replyToken, echo.text);
-  }
-
   // use reply API
-  return client.replyMessage(event.replyToken, echo);
+  return client.replyMessage(event.replyToken, reply);
 }
 
 // listen on port
