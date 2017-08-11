@@ -41,7 +41,7 @@ function handleEvent(event) {
   // create a echoing text message
   var echo = { type: 'text', text: event.message.text };
   echo.text = mr.mrHandler(echo.text, event.source.userId);
-  console.log(echo.text);
+  console.log(event.message);
   if(echo.text === 'Peace out ma doods'){
       client.replyMessage(event.replyToken, echo)
       return client.leaveGroup(event.source.groupId);
