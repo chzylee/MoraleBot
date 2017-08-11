@@ -46,6 +46,10 @@ Morning River used to play Summoners War until he spent too much money buying Ru
 
 Because he is a polite and obedient yung'n, if you ask Morning River to say something by saying `Mr. say` he will repeat what you ask. He is also polite enough to give high-fives to those who offer.
 
+### Stickers
+
+Morning River doesn't have the largest sticker book, but he does love stickers. Sometimes he'll send one if he feels like the mood is right.
+
 ### Toggle
 
 Although he may look old, Morning River is still a child at heart. Greet him with a 'Hey Mr.' or put him to sleep with a 'Goodnight Mr.' and he'll wake and sleep as you command. If you ever get sick of him, just say 'see ya Mr.' and he'll politely leave.
