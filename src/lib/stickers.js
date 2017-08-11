@@ -22,5 +22,10 @@ module.exports = class Stickers {
                 "stickerId": "520"
             }
         ]
+        this.highFive = {
+            "type": "sticker",
+            "packageId": "2",
+            "stickerId": "516"
+        }
     }
 }
