@@ -126,6 +126,16 @@ describe('Morning River bot', function(){
         expect(reply).toEqual(mr.stickerPack.highFive);
     });
 
+    it('returns high five sticker after reading high five sticker', function() {
+        message = {
+            "type": "sticker",
+            "packageId": "2",
+            "stickerId": "516"
+        }
+        var reply = mr.mrStickerHandler(message);
+        expect(reply).toEqual(mr.stickerPack.highFive);
+    });
+
     it('returns fight sticker after reading "fight" in sentence', function() {
         message.type = "text";
         message.text = "fight me kid";
