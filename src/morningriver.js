@@ -141,6 +141,9 @@ module.exports = class MorningRiver {
                 return this.formTextReply('Friday! Friday! Friday! Friday! Whooooooooooooo!');
             }
         }
+        else{
+            return undefined;
+        }
     }
 
     // STICKER FUNCTIONS
@@ -165,9 +168,13 @@ module.exports = class MorningRiver {
     mrStickerHandler(message){
         console.log('handling sticker');
         if(this.on){
-            if(message.packageId === "2000014" && message.stickerId === "690879"){
+            if((message.packageId === "2000014" && message.stickerId === "690879") 
+            || (message.packageId === "2" && message.stickerId === "516")){
                 return this.mrHighFive(message);
             }
+        }
+        else{
+            return undefined;
         }
     }
 }
