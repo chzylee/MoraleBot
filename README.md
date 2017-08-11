@@ -42,6 +42,10 @@ Morning River loves puns. His good friend Shallow Brook loved them, but passed a
 
 Morning River used to play Summoners War until he spent too much money buying Rune packs and ended up on the streets. As a devout mentee of Ellia, he memorized all her words of wisdom and shares them with his fellow Summoners.
 
+### Echo
+
+Because he is a polite and obedient yung'n, if you ask Morning River to say something by saying `Mr. say` he will repeat what you ask. He is also polite enough to give high-fives to those who offer.
+
 ### Toggle
 
 Although he may look old, Morning River is still a child at heart. Greet him with a 'Hey Mr.' or put him to sleep with a 'Goodnight Mr.' and he'll wake and sleep as you command. If you ever get sick of him, just say 'see ya Mr.' and he'll politely leave.
