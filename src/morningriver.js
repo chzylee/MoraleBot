@@ -45,6 +45,13 @@ module.exports = class MorningRiver {
         return false; // if none of the options returned true
     }
 
+    formTextReply(content){
+        return {
+            "type": "text",
+            "text": content
+        };
+    }
+
     mrHandler(message){
         if(message.type === 'text'){
             this.setLower(message.text);
@@ -60,49 +67,49 @@ module.exports = class MorningRiver {
     greet(userId){
         console.log('greeting user');
         var index = Math.ceil(Math.random() * (this.greetings.messages.length - 1));
-        return this.greetings.messages[index];
+        return this.formTextReply(this.greetings.messages[index]);
     }
 
     yoMama(){
         console.log('telling yo mama joke');
         var index = Math.ceil(Math.random() * (this.dad.jokes.length - 1));
-        return this.mama.jokes[index];
+        return this.formTextReply(this.mama.jokes[index]);
     }
 
     puns(){
         console.log('telling dad joke');
         var index = Math.ceil(Math.random() * (this.dad.jokes.length - 1));
-        return this.dad.jokes[index];
+        return this.formTextReply(this.dad.jokes[index]);
     }
 
     swEllia(){
         console.log('telling Ellia quote');
         var index = Math.ceil(Math.random() * (this.ellia.quotes.length - 1));
-        return this.ellia.quotes[index];
+        return this.formTextReply(this.ellia.quotes[index]);
     }
 
     lurkers(){
         console.log('coming out of lurking');
         var index = Math.ceil(Math.random() * (this.lurk.messages.length - 1));
-        return this.lurk.messages[index];
+        return this.formTextReply(this.lurk.messages[index]);
     }
 
     mrTextHandler(text){
-        this.setLower(text);
         if(this.lower === 'hey mr.'){
             this.on = true;
-            return 'Only my dad calls me that';
+            return this.formTextReply('Only my dad calls me that');
         }
         else if(this.lower === 'goodnight mr.'){
             this.on = false;
-            return 'But its not my bedtime yet ;-;';
+            return this.formTextReply('But its not my bedtime yet ;-;');
         }
         else if(this.lower === 'see ya mr.'){
-            return 'Peace out ma doods';
+            return this.formTextReply('Peace out ma doods');
         }
         else if(this.startsWith(['mr. say'])){
+            console.log('echoing');
             var echo = text.replace(/[Mm]r. [Ss]ay /g, '');
-            return echo;
+            return this.formTextReply(echo);
         }
 
         if(this.on){
@@ -122,13 +129,13 @@ module.exports = class MorningRiver {
                 return this.lurkers();
             }
             else if(this.contains(['saltcity'])){
-                return 'SALTCITY';
+                return this.formTextReply('SALTCITY');
             }
             else if(this.contains(['fight', 'rumble'])) {
                 return this.mrFightSticker();
             }
             else if(text.includes('FRIDAY')){ // must be in all caps
-                return 'Friday! Friday! Friday! Friday! Whooooooooooooo!';
+                return this.formTextReply('Friday! Friday! Friday! Friday! Whooooooooooooo!');
             }
         }
     }
