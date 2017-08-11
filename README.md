@@ -45,3 +45,7 @@ Morning River used to play Summoners War until he spent too much money buying Ru
 ### Toggle
 
 Although he may look old, Morning River is still a child at heart. Greet him with a 'Hey Mr.' or put him to sleep with a 'Goodnight Mr.' and he'll wake and sleep as you command. If you ever get sick of him, just say 'see ya Mr.' and he'll politely leave.
+
+## Testing
+
+Jasmine tests are setup and placed in the spec folder. [river.spec.js](./spec/river.spec.js) has the tests for the bot. Run `jasmine` in base directory to run tests.
