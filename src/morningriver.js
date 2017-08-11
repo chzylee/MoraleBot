@@ -88,9 +88,6 @@ module.exports = class MorningRiver {
             var echo = text.replace(/[Mm]r. [Ss]ay /g, '');
             return echo;
         }
-        else if(text.includes('(high five)')){
-            return '(high five)';
-        }
 
         if(this.on){
             if(this.startsWith(['hi', 'what\'s up', 'whats up']) || this.contains(['hello'])){
