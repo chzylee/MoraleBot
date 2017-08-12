@@ -140,7 +140,7 @@ module.exports = class MorningRiver {
             else if(this.contains(['nafag', 'inappropriate', 'lewd', 'nsfw'])){
                 return this.mrNAFAG();
             }
-            else if(this.contains(['congratz', 'congrats', 'gz', 'jee zee'])){
+            else if(this.contains(['congratz', 'congrats', 'gz', 'jee zee', 'grats', 'gratz'])){
                 return this.mrCongratulations();
             }
             else if(this.contains(['happy birthday', 'hbd', 'my birthday', '\'s birthday'])){
