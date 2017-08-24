@@ -1,6 +1,6 @@
 {
   "name": "moralebot",
-  "version": "1.6.2",
+  "version": "1.6.3",
   "description": "Peaceful as a morning river, and graceful as a Big Mac cruising thru yo mama's intestines, Morning-River bestows joy upon its companions through morale-boosting humour.",
   "main": "index.js",
   "scripts": {
