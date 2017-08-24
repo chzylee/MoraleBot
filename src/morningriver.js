@@ -95,11 +95,11 @@ module.exports = class MorningRiver {
     }
 
     mrTextHandler(text){
-        if(this.lower === 'hey mr.'){
+        if(this.lower === 'hey mr.' || this.lower === 'hey mr. '){
             this.on = true;
             return this.formTextReply('Only my dad calls me that');
         }
-        else if(this.lower === 'goodnight mr.'){
+        else if(this.lower === 'goodnight mr.' || this.lower === 'goodnight mr. '){
             this.on = false;
             return this.formTextReply('But its not my bedtime yet ;-;');
         }
