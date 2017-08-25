@@ -35,7 +35,8 @@ module.exports = class Ellia {
             "One more devilmon pack and I'll be out on the streets.",
             "Slime OP",
             "One of these days Lushen will give me his business card.",
-            "I wonder how many McChickens I could buy with all the money I spent on packs..."
+            "I wonder how many McChickens I could buy with all the money I spent on packs...",
+            "Ahman OP"
         ];
     }
 }
