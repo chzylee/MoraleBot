@@ -8,7 +8,7 @@ const _stickerPack = require('./lib/stickers');
 
 module.exports = class MorningRiver {
     constructor(){
-        this.on = true;
+        this.on = false;
 
         this.mama = new _mama();
         this.dad = new _dad();
