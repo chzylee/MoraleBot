@@ -10,6 +10,7 @@ const _stickerPack = require('./lib/stickers');
 module.exports = class MorningRiver {
     constructor(){
         this.on = false;
+        this.lower = "";
 
         this.mama = mama;
         this.dad = dad;
