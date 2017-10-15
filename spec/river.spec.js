@@ -1,5 +1,6 @@
 'use strict'
 const _mr = require('../src/morningriver');
+const utils = require('../src/utils');
 
 describe('Morning River bot', function(){
 
@@ -51,12 +52,12 @@ describe('Morning River bot', function(){
 
     it('detects if one of options is within message', function(){
         mr.setLower('the quick brown fox jumps');
-        expect(mr.contains(['red', 'blue', 'hot pink', 'brown'])).toBe(true);
+        expect(utils.contains(mr.lower, ['red', 'blue', 'hot pink', 'brown'])).toBe(true);
     });
 
     it('detects if message starts with one of options', function(){
         mr.setLower('green beans make my poo blue');
-        expect(mr.startsWith(['red', 'green', 'neon yellow', 'orange'])).toBe(true);
+        expect(utils.startsWith(mr.lower, ['red', 'green', 'neon yellow', 'orange'])).toBe(true);
     });
 
     it('returns a greeting after reading "hi"', function(){
@@ -64,7 +65,7 @@ describe('Morning River bot', function(){
         message.text = "hi";
         var reply = mr.mrHandler(message);
         console.log('reply to "hi": ' + reply.text);
-        expect(mr.greetings.messages.includes(reply.text)).toBe(true);
+        expect(mr.greetings.includes(reply.text)).toBe(true);
     });
 
     it('returns a yo mama joke after reading "yo mama" in message', function(){
@@ -72,7 +73,7 @@ describe('Morning River bot', function(){
         message.text = "tell a yo mama joke";
         var reply = mr.mrHandler(message);
         console.log('reply to "tell a yo mama joke": ' + reply.text);
-        expect(mr.mama.jokes.includes(reply.text)).toBe(true);
+        expect(mr.mama.includes(reply.text)).toBe(true);
     });
 
     it('returns a pun after reading "dad joke" in sentence', function(){
@@ -80,7 +81,7 @@ describe('Morning River bot', function(){
         message.text = "tell a dad joke";
         var reply = mr.mrHandler(message);
         console.log('reply to "tell a dad joke": ' + reply.text);
-        expect(mr.dad.jokes.includes(reply.text)).toBe(true);
+        expect(mr.dad.includes(reply.text)).toBe(true);
     });
 
     it('returns an Ellia quote after reading "sw" in sentence', function(){
@@ -88,7 +89,7 @@ describe('Morning River bot', function(){
         message.text = "i love sw";
         var reply = mr.mrHandler(message);
         console.log('reply to "i love sw": ' + reply.text);
-        expect(mr.ellia.quotes.includes(reply.text)).toBe(true);
+        expect(mr.ellia.includes(reply.text)).toBe(true);
     });
 
     it('returns lurk message after reading "lurk" in sentence', function(){
@@ -96,7 +97,7 @@ describe('Morning River bot', function(){
         message.text = "whos lurking?";
         var reply = mr.mrHandler(message);
         console.log('reply to "whos lurking?": ' + reply.text);
-        expect(mr.lurk.messages.includes(reply.text)).toBe(true);
+        expect(mr.lurk.includes(reply.text)).toBe(true);
     });
 
     it('returns chant of "Friday!" after reading "FRIDAY" in sentence', function(){

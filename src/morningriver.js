@@ -1,21 +1,21 @@
 const line = require('@line/bot-sdk');
-const utils = require('../utils');
-const _mama = require('./lib/yomama');
-const _dad = require('./lib/dadjoke');
-const _greetings = require('./lib/greeting');
-const _ellia = require('./lib/ellia');
-const _lurk = require('./lib/lurk');
+const utils = require('./utils');
+const mama = require('./lib/yomama');
+const dad = require('./lib/dadjoke');
+const greetings = require('./lib/greeting');
+const ellia = require('./lib/ellia');
+const lurk = require('./lib/lurk');
 const _stickerPack = require('./lib/stickers');
 
 module.exports = class MorningRiver {
     constructor(){
         this.on = false;
 
-        this.mama = new _mama();
-        this.dad = new _dad();
-        this.greetings = new _greetings();
-        this.ellia = new _ellia();
-        this.lurk = new _lurk();
+        this.mama = mama;
+        this.dad = dad;
+        this.greetings = greetings;
+        this.ellia = ellia;
+        this.lurk = lurk;
         this.stickerPack = new _stickerPack();
         // this.client = new line.Client({
         //     channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN
@@ -42,28 +42,27 @@ module.exports = class MorningRiver {
 
     greet(userId){
         console.log('greeting user');
-        return utils.formTextReply(utils.randomFrom(this.greetings.messages));
+        return utils.formTextReply(utils.randomFrom(this.greetings));
     }
 
     yoMama(){
         console.log('telling yo mama joke');
-        return utils.formTextReply(utils.randomFrom(this.mama.jokes));
+        return utils.formTextReply(utils.randomFrom(this.mama));
     }
 
     puns(){
         console.log('telling dad joke');
-        return utils.formTextReply(utils.randomFrom(this.dad.jokes));
+        return utils.formTextReply(utils.randomFrom(this.dad));
     }
 
     swEllia(){
         console.log('telling Ellia quote');
-        return utils.formTextReply(utils.randomFrom(this.ellia.quotes));
+        return utils.formTextReply(utils.randomFrom(this.ellia));
     }
 
     lurkers(){
         console.log('coming out of lurking');
-        var index = Math.ceil(Math.random() * (this.lurk.messages.length - 1));
-        return utils.formTextReply(utils.randomFrom(this.lurk.messages));
+        return utils.formTextReply(utils.randomFrom(this.lurk));
     }
 
     mrTextHandler(text){
@@ -78,44 +77,44 @@ module.exports = class MorningRiver {
         else if(this.lower === 'see ya mr.'){
             return utils.formTextReply('Peace out ma doods');
         }
-        else if(utils.startsWith(['mr. say'])){
+        else if(utils.startsWith(this.lower, ['mr. say'])){
             console.log('echoing');
             var echo = text.replace(/[Mm]r. [Ss]ay /g, '');
             return utils.formTextReply(echo);
         }
 
         if(this.on){
-            if(utils.startsWith(['hi', 'what\'s up', 'whats up', 'good morning']) || utils.contains(['hello'])){
+            if(utils.startsWith(this.lower, ['hi', 'what\'s up', 'whats up', 'good morning']) || utils.contains(this.lower, ['hello'])){
                 return this.greet();
             }
-            else if(utils.contains(['yo mama', 'yo mamma', 'yo momma'])){
+            else if(utils.contains(this.lower, ['yo mama', 'yo mamma', 'yo momma'])){
                 return this.yoMama();
             }
-            else if(utils.contains(['pun', 'puns', 'dad joke'])){
+            else if(utils.contains(this.lower, ['pun', 'puns', 'dad joke'])){
                 return this.puns();
             }
-            else if(utils.contains(['sw', 'summoners war'])){
+            else if(utils.contains(this.lower, ['sw', 'summoners war'])){
                 return this.swEllia();
             }
-            else if(utils.contains(['lurk'])){
+            else if(utils.contains(this.lower, ['lurk'])){
                 return this.lurkers();
             }
-            else if(utils.contains(['saltcity'])){
+            else if(utils.contains(this.lower, ['saltcity'])){
                 return utils.formTextReply('SALTCITY');
             }
-            else if(utils.contains(['let\'s get down to business', 'lets get down to business'])){
+            else if(utils.contains(this.lower, ['let\'s get down to business', 'lets get down to business'])){
                 return utils.formTextReply('To defeat the huns');
             }
-            else if(utils.contains(['fight', 'rumble'])){
+            else if(utils.contains(this.lower, ['fight', 'rumble'])){
                 return this.mrFightSticker();
             }
-            else if(utils.contains(['nafag', 'inappropriate', 'lewd', 'nsfw'])){
+            else if(utils.contains(this.lower, ['nafag', 'inappropriate', 'lewd', 'nsfw'])){
                 return this.mrNAFAG();
             }
-            else if(utils.contains(['congratz', 'congrats', 'gz', 'jee zee', 'grats', 'gratz'])){
+            else if(utils.contains(this.lower, ['congratz', 'congrats', 'gz', 'jee zee', 'grats', 'gratz'])){
                 return this.mrCongratulations();
             }
-            else if(utils.contains(['happy birthday', 'hbd', 'my birthday', '\'s birthday'])){
+            else if(utils.contains(this.lower, ['happy birthday', 'hbd', 'my birthday', '\'s birthday'])){
                 return this.mrBirthday();
             }
             else if(text.includes('FRIDAY')){ // must be in all caps
