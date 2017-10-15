@@ -1,4 +1,5 @@
 const line = require('@line/bot-sdk');
+const utils = require('../utils');
 const _mama = require('./lib/yomama');
 const _dad = require('./lib/dadjoke');
 const _greetings = require('./lib/greeting');
@@ -27,31 +28,6 @@ module.exports = class MorningRiver {
         this.lower = text.toLowerCase();
     }
 
-    contains(options){
-        for(var i = 0; i < options.length; i++){        // for all options
-            if(this.lower.includes(options[i])) {   // if lower contains one of options
-                return true; // does contain one of options
-            }
-        }
-        return false; // if none of the options returned true
-    }
-
-    startsWith(options){
-        for(var i = 0; i < options.length; i++){        // for all options
-            if(this.lower.startsWith(options[i])) {   // if lower starts with one of options
-                return true; // does start with one of options
-            }
-        }
-        return false; // if none of the options returned true
-    }
-
-    formTextReply(content){
-        return {
-            "type": "text",
-            "text": content
-        };
-    }
-
     mrHandler(message){
         if(message.type === 'text'){
             this.setLower(message.text);
@@ -66,88 +42,84 @@ module.exports = class MorningRiver {
 
     greet(userId){
         console.log('greeting user');
-        var index = Math.ceil(Math.random() * (this.greetings.messages.length - 1));
-        return this.formTextReply(this.greetings.messages[index]);
+        return utils.formTextReply(utils.randomFrom(this.greetings.messages));
     }
 
     yoMama(){
         console.log('telling yo mama joke');
-        var index = Math.ceil(Math.random() * (this.dad.jokes.length - 1));
-        return this.formTextReply(this.mama.jokes[index]);
+        return utils.formTextReply(utils.randomFrom(this.mama.jokes));
     }
 
     puns(){
         console.log('telling dad joke');
-        var index = Math.ceil(Math.random() * (this.dad.jokes.length - 1));
-        return this.formTextReply(this.dad.jokes[index]);
+        return utils.formTextReply(utils.randomFrom(this.dad.jokes));
     }
 
     swEllia(){
         console.log('telling Ellia quote');
-        var index = Math.ceil(Math.random() * (this.ellia.quotes.length - 1));
-        return this.formTextReply(this.ellia.quotes[index]);
+        return utils.formTextReply(utils.randomFrom(this.ellia.quotes));
     }
 
     lurkers(){
         console.log('coming out of lurking');
         var index = Math.ceil(Math.random() * (this.lurk.messages.length - 1));
-        return this.formTextReply(this.lurk.messages[index]);
+        return utils.formTextReply(utils.randomFrom(this.lurk.messages));
     }
 
     mrTextHandler(text){
         if(this.lower === 'hey mr.' || this.lower === 'hey mr. '){
             this.on = true;
-            return this.formTextReply('Only my dad calls me that');
+            return utils.formTextReply('Only my dad calls me that');
         }
         else if(this.lower === 'goodnight mr.' || this.lower === 'goodnight mr. '){
             this.on = false;
-            return this.formTextReply('But its not my bedtime yet ;-;');
+            return utils.formTextReply('But its not my bedtime yet ;-;');
         }
         else if(this.lower === 'see ya mr.'){
-            return this.formTextReply('Peace out ma doods');
+            return utils.formTextReply('Peace out ma doods');
         }
-        else if(this.startsWith(['mr. say'])){
+        else if(utils.startsWith(['mr. say'])){
             console.log('echoing');
             var echo = text.replace(/[Mm]r. [Ss]ay /g, '');
-            return this.formTextReply(echo);
+            return utils.formTextReply(echo);
         }
 
         if(this.on){
-            if(this.startsWith(['hi', 'what\'s up', 'whats up', 'good morning']) || this.contains(['hello'])){
+            if(utils.startsWith(['hi', 'what\'s up', 'whats up', 'good morning']) || utils.contains(['hello'])){
                 return this.greet();
             }
-            else if(this.contains(['yo mama', 'yo mamma', 'yo momma'])){
+            else if(utils.contains(['yo mama', 'yo mamma', 'yo momma'])){
                 return this.yoMama();
             }
-            else if(this.contains(['pun', 'puns', 'dad joke'])){
+            else if(utils.contains(['pun', 'puns', 'dad joke'])){
                 return this.puns();
             }
-            else if(this.contains(['sw', 'summoners war'])){
+            else if(utils.contains(['sw', 'summoners war'])){
                 return this.swEllia();
             }
-            else if(this.contains(['lurk'])){
+            else if(utils.contains(['lurk'])){
                 return this.lurkers();
             }
-            else if(this.contains(['saltcity'])){
-                return this.formTextReply('SALTCITY');
+            else if(utils.contains(['saltcity'])){
+                return utils.formTextReply('SALTCITY');
             }
-            else if(this.contains(['let\'s get down to business', 'lets get down to business'])){
-                return this.formTextReply('To defeat the huns');
+            else if(utils.contains(['let\'s get down to business', 'lets get down to business'])){
+                return utils.formTextReply('To defeat the huns');
             }
-            else if(this.contains(['fight', 'rumble'])){
+            else if(utils.contains(['fight', 'rumble'])){
                 return this.mrFightSticker();
             }
-            else if(this.contains(['nafag', 'inappropriate', 'lewd', 'nsfw'])){
+            else if(utils.contains(['nafag', 'inappropriate', 'lewd', 'nsfw'])){
                 return this.mrNAFAG();
             }
-            else if(this.contains(['congratz', 'congrats', 'gz', 'jee zee', 'grats', 'gratz'])){
+            else if(utils.contains(['congratz', 'congrats', 'gz', 'jee zee', 'grats', 'gratz'])){
                 return this.mrCongratulations();
             }
-            else if(this.contains(['happy birthday', 'hbd', 'my birthday', '\'s birthday'])){
+            else if(utils.contains(['happy birthday', 'hbd', 'my birthday', '\'s birthday'])){
                 return this.mrBirthday();
             }
             else if(text.includes('FRIDAY')){ // must be in all caps
-                return this.formTextReply('Friday! Friday! Friday! Friday! Whooooooooooooo!');
+                return utils.formTextReply('Friday! Friday! Friday! Friday! Whooooooooooooo!');
             }
         }
         else{
@@ -164,20 +136,17 @@ module.exports = class MorningRiver {
 
     mrFightSticker(){
         console.log('fighting');
-        var index = Math.ceil(Math.random() * (this.stickerPack.fight.length - 1));
-        return this.stickerPack.fight[index];
+        return utils.randomFrom(this.stickerPack.fight);
     }
 
     mrNAFAG(){
         console.log('reporting NAFAG content');
-        var index = Math.ceil(Math.random() * (this.stickerPack.nafag.length - 1));
-        return this.stickerPack.nafag[index];
+        return utils.randomFrom(this.stickerPack.nafag);
     }
 
     mrCongratulations(){
         console.log('congratulating');
-        var index = Math.ceil(Math.random() * (this.stickerPack.congrats.length - 1));
-        return this.stickerPack.congrats[index];
+        return utils.randomFrom(this.stickerPack.congrats);
     }
 
     mrBirthday(){
