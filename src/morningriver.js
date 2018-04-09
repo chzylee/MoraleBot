@@ -85,7 +85,7 @@ module.exports = class MorningRiver {
         }
 
         if(this.on){
-            if(utils.startsWith(this.lower, ['hi', 'what\'s up', 'whats up', 'good morning']) || utils.contains(this.lower, ['hello'])){
+            if(utils.startsWith(this.lower, ['hi', 'how are you', 'how r u', 'wassup', 'what\'s up', 'whats up', 'good morning']) || utils.contains(this.lower, ['hello'])){
                 return this.greet();
             }
             else if(utils.contains(this.lower, ['yo mama', 'yo mamma', 'yo momma'])){
@@ -120,6 +120,9 @@ module.exports = class MorningRiver {
             }
             else if(text.includes('FRIDAY')){ // must be in all caps
                 return utils.formTextReply('Friday! Friday! Friday! Friday! Whooooooooooooo!');
+            }
+            else if(utils.startsWith(this.lower, ['i love you'])){
+                return utils.formTextReply('eww -.-');
             }
         }
         else{
